@@ -1,0 +1,82 @@
+/*
+ * Common
+ */
+.text-right {
+	text-align: right;
+}
+
+.flex {
+	display: flex;
+}
+
+
+
+/*
+ * Element-Specific
+ */
+#rx-mod-settings {
+	background-color: #fff;
+	padding: 30px;
+	border-radius: 15px;
+	width: 350px;
+	min-height: 300px;
+	top: 1em;
+	left: 50%;
+	margin-left: -175px;
+	z-index: 99999;
+	box-shadow: 0 0 15px #000;
+	position: fixed;
+}
+
+#rx-mod-settings input.keybinding {
+	max-width: 20px;
+	border: 1px solid #ccc;
+	padding: 0;
+	text-align: center;
+	margin-right: 5px;
+}
+
+#rx-mod-settings input[type="radio"] {
+	margin-right: 5px;
+}
+#rx-mod-settings input[type="submit"] {
+	width: 100%;
+	margin-top: 15px;
+}
+
+#rx-mod-settings.hidden {
+	display: none;
+}
+
+#rx-mod-wrap {
+	background-color:#000;
+	color:#fff;
+	min-height: 25px;
+	opacity: 0.45;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index:99998;
+}
+
+#rx-mod-wrap:hover {
+	opacity: 1;
+}
+
+#rx-mod-wrap button {
+	cursor: pointer;
+	color: #333;
+}
+
+#rx-mod-wrap span.text {
+	margin-left: 15px;
+	padding-left: 15px;
+	border-left: 1px solid #dfdfdf;
+}
+
+#text-block,#left_ad_block,#ad_bottom,.ad-block,.ad-block-left,.ad-block-right {
+	visibility: hidden;
+}
+
+

@@ -1030,7 +1030,7 @@ const rzMods = [{
 	modType: 'code',
 	modDescription: 'Mod clan chat.',
 	modCode: () => {
-		return '<a href="https://discord.gg/N93nthpR" target="_blank" style="margin-left: 15px">Mod Chat</a>'
+		return '<a href="https://discord.gg/S5g23rEKV5" target="_blank" style="margin-left: 15px">Mod Chat</a>'
 	}
 }, {
 	modName: 'Modules Loaded',
