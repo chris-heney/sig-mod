@@ -1,6 +1,6 @@
-const rzModWrap = document.createElement('div')
-const rzModSettings = document.createElement('form')
+const rzMod = document.createElement('div')
 const rzModStyle = document.createElement('link')
+const rzModSettingsForm = document.createElement('form')
 
 let rzModScripts = {
 	run(){
@@ -766,7 +766,7 @@ const KEY_SPLIT = {
 	which: 32
 }
 
-rzModWrap.setAttribute('id', 'mod-wrap')
+rzMod.setAttribute('id', 'mod-wrap')
 
 rzModStyle.type = 'text/css'
 rzModStyle.rel = 'stylesheet'
@@ -777,10 +777,12 @@ rzModStyle.href = 'https://chrisheney.com/sigmally-mod.css?seed='+Math.random()
  * Configure Settings
  */
 
-let modSettings = localStorage.getItem('modSettings')
+let rzModSettingsData = localStorage.getItem('rzModSettingsData')
 
-if (!modSettings){
-	modSettings = {
+console.log('1', rzModSettingsData)
+
+if (!rzModSettingsData || typeof rzModSettingsData.modsEnabled === undefined){
+	rzModSettingsData = {
 		keyBindingsRapidFeed: 'q',
 		keyBindingsdoubleSplit: 'd',
 		keyBindingsTripleSplit: 'f',
@@ -789,56 +791,59 @@ if (!modSettings){
 		skinUnlockKey: '',
 		customSkin: 'default'
 	}
+	console.log('2', rzModSettingsData)
 } else {
-	modSettings = JSON.parse(modSettings)
+	rzModSettingsData = JSON.parse(rzModSettingsData)
+	console.log('3', rzModSettingsData)
 }
 
 // ring1er0:eca02db71df0a4ef922072164f739c50
 
-rzModSettings.setAttribute('id', 'mod-settings')
-rzModSettings.classList.add('hidden')
-rzModSettings.onsubmit = (e) => {
-	rzModSettings.classList.toggle('hidden')
+rzModSettingsForm.setAttribute('id', 'mod-settings')
+rzModSettingsForm.classList.add('hidden')
+rzModSettingsForm.onsubmit = (e) => {
+	rzModSettingsForm.classList.toggle('hidden')
 	e.preventDefault()
 
-	let options = new FormData(rzModSettings)
+	let options = new FormData(rzModSettingsData)
+	console.log('4', rzModSettingsData)
 
-	modSettings = {}
+	// rzModSettingsData = {}
 	for (var key of options.keys()) {
-		modSettings[key] = options.get(key)
+		rzModSettingsData[key] = options.get(key)
 	}
 
-	localStorage.setItem('modSettings', JSON.stringify(modSettings))
+	localStorage.setItem('rzModSettingsData', JSON.stringify(rzModSettings))
 
 	return false
 }
-rzModSettings.innerHTML = '<h4>Mod Settings</h4>' +
+rzModSettingsForm.innerHTML = '<h4>Mod Settings</h4>' +
 	'<hr/>' +
 	'<h5>Key Mappings</h5>' +
 	'<label class="flex">' +
-		'<input type="text" name="keyBindingsRapidFeed" class="keybinding" value="' + modSettings.keyBindingsRapidFeed + '" maxlength="1" onfocus="this.select()">' +
+		'<input type="text" name="keyBindingsRapidFeed" class="keybinding" value="' + rzModSettingsData.keyBindingsRapidFeed + '" maxlength="1" onfocus="this.select()">' +
 		'<span class="text">Rapid Feed</span>' +
 	'</label>' +
 	'<label class="flex">' +
-		'<input type="text" name="keyBindingsDoubleSplit" class="keybinding" value="' + modSettings.keyBindingsDoubleSplit + '" maxlength="1" onfocus="this.select()">' +
+		'<input type="text" name="keyBindingsDoubleSplit" class="keybinding" value="' + rzModSettingsData.keyBindingsDoubleSplit + '" maxlength="1" onfocus="this.select()">' +
 		'<span class="text">Double Split</span>' +
 	'</label>' +
 	'<label class="flex">' +
-		'<input type="text" name="keyBindingsTripleSplit" class="keybinding" value="' + modSettings.keyBindingsTripleSplit + '" maxlength="1" onfocus="this.select()">' +
+		'<input type="text" name="keyBindingsTripleSplit" class="keybinding" value="' + rzModSettingsData.keyBindingsTripleSplit + '" maxlength="1" onfocus="this.select()">' +
 		'<span class="text">Triple Split</span>' +
 	'</label>' +
 	'<label class="flex">' +
-		'<input type="text" name="keyBindingsQuadSplit" class="keybinding" value="' + modSettings.keyBindingsQuadSplit + '" maxlength="1" onfocus="this.select()">' +
+		'<input type="text" name="keyBindingsQuadSplit" class="keybinding" value="' + rzModSettingsData.keyBindingsQuadSplit + '" maxlength="1" onfocus="this.select()">' +
 		'<span class="text">Quad Split</span>' +
 	'</label>' +
 	'<hr/>' +
 	'<h5>Custom Skin</h5>' +
 	'<label class="flex">' +
-		'<input type="radio" name="customSkin" value="default"' + (modSettings.customSkin === 'default' ? ' checked="checked"' : '') + '>' +
+		'<input type="radio" name="customSkin" value="default"' + (rzModSettingsData.customSkin === 'default' ? ' checked="checked"' : '') + '>' +
 		'<span class="text">Default</span>' +
 	'</label>' +
 	'<label class="flex">' +
-		'<input type="radio" name="customSkin" value="Zero_Two"' + (modSettings.customSkin === 'Zero_Two' ? ' checked="checked"' : '') + '>' +
+		'<input type="radio" name="customSkin" value="Zero_Two"' + (rzModSettingsData.customSkin === 'Zero_Two' ? ' checked="checked"' : '') + '>' +
 		'<span class="text">Zero_Two</span>' +
 	'</label>' +
 	'<input type="submit" value="Save &amp Close"/>'
@@ -859,7 +864,7 @@ const rzMods = [{
 	modDescription: 'Adds R҉i҉n҉g҉Z҉e҉r҉O҉ Brand.',
 	modCode: () => {
 		const gameTitle = document.getElementById('title')
-		gameTitle.innerHTML = 'R҉i҉n҉g҉Z҉e҉r҉O҉\'s Sig Mod<span style="display:block font-size: 14px">To Unrealm whom we all pay tribute!</span>'
+		gameTitle.innerHTML = 'R҉i҉n҉g҉Z҉e҉r҉O҉\'s<br/>Sig Mod<span style="display:block;font-size: 14px;font-style:italic;">To Unrealm whom we all pay tribute!</span>'
 	}
 }, {
 	modName: 'All Skins',
@@ -886,7 +891,7 @@ const rzMods = [{
 		const amount = 10
 
 		window.addEventListener('keyup', e => {
-			if (e.key == modSettings.keyBindingsRapidFeed){
+			if (e.key == rzModSettingsData.keyBindingsRapidFeed){
 				for (var i = 0; i < modTimeouts.length; i++){
 					clearTimeout(modTimeouts[i])
 				}
@@ -899,10 +904,10 @@ const rzMods = [{
 		window.addEventListener('keydown', e => {
 
 			if (e.key == 'Escape'){
-				rzModSettings.classList.add('hidden')
+				rzModSettingsForm.classList.add('hidden')
 			}
 
-			if (e.key == modSettings.keyBindingsRapidFeed){
+			if (e.key == rzModSettingsData.keyBindingsRapidFeed){
 
 				// kickstart first one
 				window.dispatchEvent(new KeyboardEvent('keydown', KEY_FEED ))
@@ -924,7 +929,7 @@ const rzMods = [{
 				return
 			}
 
-			if (e.key == modSettings.keyBindingsDoubleSplit){
+			if (e.key == rzModSettingsData.keyBindingsDoubleSplit){
 				for (var i = 0; i < 2; ++i) {
 					setTimeout(function() {
 						window.dispatchEvent(new KeyboardEvent('keydown', KEY_SPLIT))
@@ -934,7 +939,7 @@ const rzMods = [{
 				return
 			}
 
-			if (e.key == modSettings.keyBindingsTripleSplit){
+			if (e.key == rzModSettingsData.keyBindingsTripleSplit){
 				window.dispatchEvent(new KeyboardEvent('keydown', KEY_SPLIT))
 				window.dispatchEvent(new KeyboardEvent('keyup', KEY_SPLIT))
 				window.dispatchEvent(new KeyboardEvent('keydown', KEY_SPLIT))
@@ -944,7 +949,7 @@ const rzMods = [{
 				return
 			}
 
-			if (e.key == modSettings.keyBindingsQuadSplit){
+			if (e.key == rzModSettingsData.keyBindingsQuadSplit){
 				window.dispatchEvent(new KeyboardEvent('keydown', KEY_SPLIT))
 				window.dispatchEvent(new KeyboardEvent('keyup', KEY_SPLIT))
 				window.dispatchEvent(new KeyboardEvent('keydown', KEY_SPLIT))
@@ -974,7 +979,12 @@ const rzMods = [{
 		setTimeout(async () => {
 			const res = await fetch('https://chrisheney.com/auth-check.php', {
 				method: 'POST',
-			    headers: {'Content-Type': 'application/json'}, 
+				mode: 'cors',
+				credentials: 'include',
+			    headers: {
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'
+				}, 
 				body: JSON.stringify(uData)
 			})
 		}, 1500)
@@ -984,7 +994,7 @@ const rzMods = [{
 	modType: 'button',
 	modDescription: 'R҉i҉n҉g҉Z҉e҉r҉O҉\'s Mod Settings.',
 	modCode: () => {
-		rzModSettings.classList.toggle('hidden')
+		rzModSettingsData.classList.toggle('hidden')
 	}
 }, {
 	modName: 'Clan Map',
@@ -1044,8 +1054,9 @@ const rzMods = [{
 
 rzMods.forEach(mod => {
 
-	console.log( typeof modSettings.modsEnabled )
-	if ( ! modSettings.modsEnabled.includes( mod.modName ) ){
+	console.log( '5', rzModSettingsData )
+
+	if ( ! rzModSettingsData.modsEnabled.includes( mod.modName ) ){
 		return
 	}
 
@@ -1077,12 +1088,17 @@ rzMods.forEach(mod => {
 	}
 
 	if (modElement){
-			rzModWrap.append(modElement)
+			rzMod.append(modElement)
 	}
 })
 
+console.log(rzModStyle)
 document.body.prepend(rzModStyle)
-document.body.prepend(rzModWrap)
-document.body.prepend(rzModSettings)
+document.body.prepend(rzMod)
+document.body.prepend(rzModSettingsForm)
 
 rzModScripts.run()
+
+
+// Credits (c) 2021 RingZer0 (Don't Remove)
+console.log('%c                                                   \r\n\u2588\u2584\u2584\u2584\u2584 \u2584\u2588    \u2584     \u2584\u2580  \u2584\u2584\u2584\u2584\u2584\u2584   \u2584\u2588\u2588\u2588\u2584   \u2588\u2584\u2584\u2584\u2584 \u2588\u2588\u2588\u2588\u2584 \r\n\u2588  \u2584\u2580 \u2588\u2588     \u2588  \u2584\u2580   \u2580   \u2584\u2584\u2580   \u2588\u2580   \u2580  \u2588  \u2584\u2580 \u2588   \u2588 \r\n\u2588\u2580\u2580\u258C  \u2588\u2588 \u2588\u2588   \u2588 \u2588 \u2580\u2584  \u2584\u2580\u2580   \u2584\u2580 \u2588\u2588\u2584\u2584    \u2588\u2580\u2580\u258C  \u2588   \u2588 \r\n\u2588  \u2588  \u2590\u2588 \u2588 \u2588  \u2588 \u2588   \u2588 \u2580\u2580\u2580\u2580\u2580\u2580   \u2588\u2584   \u2584\u2580 \u2588  \u2588  \u2580\u2588\u2588\u2588\u2588 \r\n  \u2588    \u2590 \u2588  \u2588 \u2588  \u2588\u2588\u2588           \u2580\u2588\u2588\u2588\u2580     \u2588         \r\n \u2580       \u2588   \u2588\u2588                         \u2580          \r\n                                             ᵀ丂   \r\n                                                   ', 'background-color: black; color: green')
