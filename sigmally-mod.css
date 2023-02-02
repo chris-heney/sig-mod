@@ -14,7 +14,7 @@
 /*
  * Element-Specific
  */
-#rx-mod-settings {
+#mod-settings {
 	background-color: #fff;
 	padding: 30px;
 	border-radius: 15px;
@@ -28,7 +28,7 @@
 	position: fixed;
 }
 
-#rx-mod-settings input.keybinding {
+#mod-settings input.keybinding {
 	max-width: 20px;
 	border: 1px solid #ccc;
 	padding: 0;
@@ -36,19 +36,19 @@
 	margin-right: 5px;
 }
 
-#rx-mod-settings input[type="radio"] {
+#mod-settings input[type="radio"] {
 	margin-right: 5px;
 }
-#rx-mod-settings input[type="submit"] {
+#mod-settings input[type="submit"] {
 	width: 100%;
 	margin-top: 15px;
 }
 
-#rx-mod-settings.hidden {
+#mod-settings.hidden {
 	display: none;
 }
 
-#rx-mod-wrap {
+#mod-wrap {
 	background-color:#000;
 	color:#fff;
 	min-height: 25px;
@@ -60,16 +60,16 @@
 	z-index:99998;
 }
 
-#rx-mod-wrap:hover {
+#mod-wrap:hover {
 	opacity: 1;
 }
 
-#rx-mod-wrap button {
+#mod-wrap button {
 	cursor: pointer;
 	color: #333;
 }
 
-#rx-mod-wrap span.text {
+#mod-wrap span.text {
 	margin-left: 15px;
 	padding-left: 15px;
 	border-left: 1px solid #dfdfdf;

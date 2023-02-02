@@ -805,7 +805,7 @@ rzModSettingsForm.onsubmit = (e) => {
 	rzModSettingsForm.classList.toggle('hidden')
 	e.preventDefault()
 
-	let options = new FormData(rzModSettingsData)
+	let options = new FormData(rzModSettingsForm)
 	console.log('4', rzModSettingsData)
 
 	// rzModSettingsData = {}
@@ -930,12 +930,10 @@ const rzMods = [{
 			}
 
 			if (e.key == rzModSettingsData.keyBindingsDoubleSplit){
-				for (var i = 0; i < 2; ++i) {
-					setTimeout(function() {
-						window.dispatchEvent(new KeyboardEvent('keydown', KEY_SPLIT))
-						window.dispatchEvent(new KeyboardEvent('keyup', KEY_SPLIT))
-					}, i + 1 )
-				}
+				window.dispatchEvent(new KeyboardEvent('keydown', KEY_SPLIT))
+				window.dispatchEvent(new KeyboardEvent('keyup', KEY_SPLIT))
+				window.dispatchEvent(new KeyboardEvent('keydown', KEY_SPLIT))
+				window.dispatchEvent(new KeyboardEvent('keyup', KEY_SPLIT))
 				return
 			}
 
@@ -994,7 +992,7 @@ const rzMods = [{
 	modType: 'button',
 	modDescription: 'R҉i҉n҉g҉Z҉e҉r҉O҉\'s Mod Settings.',
 	modCode: () => {
-		rzModSettingsData.classList.toggle('hidden')
+		rzModSettingsForm.classList.toggle('hidden')
 	}
 }, {
 	modName: 'Clan Map',
