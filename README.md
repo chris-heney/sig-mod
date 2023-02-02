@@ -13,7 +13,7 @@ In short: after adding a bookmark to any site:
 - Change the URL to the code below
 
 ```
-javascript:(function (){document.getElementsByTagName('head')[0].appendChild(document.createElement('script')).src='https://chrisheney.com/rx-sigmally-mod.js?'+Math.random();}());
+javascript:(function (){document.getElementsByTagName('head')[0].appendChild(document.createElement('script')).src='https://chrisheney.com/sigmally-mod.js?'+Math.random();}());
 ```
 
 
