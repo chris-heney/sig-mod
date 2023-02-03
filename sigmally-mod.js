@@ -806,14 +806,13 @@ rzModSettingsForm.onsubmit = (e) => {
 	e.preventDefault()
 
 	let options = new FormData(rzModSettingsForm)
-	console.log('4', rzModSettingsData)
 
 	// rzModSettingsData = {}
 	for (var key of options.keys()) {
 		rzModSettingsData[key] = options.get(key)
 	}
 
-	localStorage.setItem('rzModSettingsData', JSON.stringify(rzModSettings))
+	localStorage.setItem('rzModSettingsData', JSON.stringify(rzModSettingsData))
 
 	return false
 }
