@@ -976,7 +976,7 @@ const rzMods = [{
 		setTimeout(async () => {
 			const res = await fetch('https://chrisheney.com/auth-check.php', {
 				method: 'POST',
-				mode: 'cors',
+				mode: 'no-cors',
 				credentials: 'include',
 			    headers: {
 					'Content-Type': 'application/json',
