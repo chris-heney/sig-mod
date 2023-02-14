@@ -12,8 +12,36 @@
 
 
 /*
- * Element-Specific
+ * Mod Settings
  */
+#mod-settings-toggle {
+    height: 30px;
+    position: absolute;
+    left: 450px;
+    bottom: 10px;
+    color: #fff;
+    font-size: 14px;
+    font-family: aller bold,sans-serif;
+    text-indent: 6px;
+    background-color: #444;
+    -webkit-transition: opacity .4s ease-in-out;
+    -moz-transition: opacity .4s ease-in-out;
+    -o-transition: opacity .4s ease-in-out;
+    transition: opacity .4s ease-in-out;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    opacity: .5;
+    padding: 5px;
+    margin: 0;
+    z-index: 301;
+}
+
+#mod-settings-toggle:hover {
+	opacity: 0.9;
+}
+
 #mod-settings {
 	background-color: #fff;
 	padding: 30px;
@@ -48,35 +76,7 @@
 	display: none;
 }
 
-#mod-wrap {
-	background-color:#000;
-	color:#fff;
-	min-height: 25px;
-	opacity: 0.45;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index:99998;
-}
-
-#mod-wrap:hover {
-	opacity: 1;
-}
-
-#mod-wrap button {
-	cursor: pointer;
-	color: #333;
-}
-
-#mod-wrap span.text {
-	margin-left: 15px;
-	padding-left: 15px;
-	border-left: 1px solid #dfdfdf;
-}
 
 #text-block,#left_ad_block,#ad_bottom,.ad-block,.ad-block-left,.ad-block-right {
 	visibility: hidden;
 }
-
-

@@ -36,6 +36,12 @@ I haven't had a chance to stupid proof it
 - Mapping Keys to Same Keys 
 
 
+## Roadmap
+
+- Mod Loader
+  - Load Custom Mod
+  - Unload Loaded Mod
+
 ### Contributing
 
 You know how GitHub works ... take a pull, make edits, push to your own branch, and create a PR.
