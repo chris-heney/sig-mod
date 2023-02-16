@@ -18,19 +18,6 @@ const init = async () => {
 	ModStyle.rel = 'stylesheet'
 	ModStyle.href = 'https://chrisheney.com/sigmally-mod.css?seed='+Math.random()
 
-	/*
-	* @TODO: Incorporate these items:
-	* 1. Chat Button
-	* return '<a href="https://discord.gg/S5g23rEKV5" target="_blank" style="margin-left: 15px">Mod Chat</a>'
-	* 
-	* 2. Settings Toggle
-	* toggleSettings: () => {
-	*		ModSettingsForm.classList.toggle('hidden')
-	*	}
-	* 
-	* 
-	*/
-
 	// Mod ModSettingsControllerFactory Settings
 	const ModSettingsController = ModSettingsControllerFactory()
 	

@@ -1,6 +1,6 @@
 import { IModule } from '../../@types/index'
 
-import AdRemoval from './AdFree'
+import AdRemoval from './AdRemoval'
 import AllSkins from './AllSkins'
 import Branding from './Branding'
 import ClanMap from './ClanMap'

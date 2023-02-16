@@ -2,7 +2,7 @@
   "name": "sig-mod",
   "version": "1.0.1",
   "description": "A sigmally.com mod loader written in Typescript to enhance gameplay on sigmally.com.",
-  "main": "sigmally-mod.js",
+  "main": "index.js",
   "devDependencies": {
     "typescript": "^4.9.5"
   },
