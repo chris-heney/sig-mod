@@ -24,7 +24,7 @@ const KEY_SPLIT = {
 
 const Macros: IModule = {
 	name: 'Macros',
-	description: 'Allows for longer nicknames.',
+	description: 'Keyboard shortcuts for the rich and famous.',
 	load: () => {
 
 		// TODO: Add these to settings/configuration pane
